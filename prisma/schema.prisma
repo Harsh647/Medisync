@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String      @id @default(cuid())
+  email       String      @unique
+  name        String?
+  dob         String?
+  gender      String?
+  bloodGroup  String?
+  vitals      Vital[]
+  medicines   Medicine[]
+  documents   Document[]
+  reports     Report[]
+  predictions Prediction[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Vital {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date        String
+  time        String?
+  heartRate   Int?
+  systolic    Int?
+  diastolic   Int?
+  glucose     Int?
+  oxygen      Int?
+  temperature Float?
+  createdAt   DateTime @default(now())
+}
+
+model Medicine {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  dosage    String
+  meal      String
+  times     String[]
+  quantity  Int
+  threshold Int
+  taken     Boolean[]
+  takenDate String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Document {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  category  String
+  type      String
+  size      String
+  date      String
+  preview   String
+  fileUrl   String?
+  content   String?
+  createdAt DateTime @default(now())
+}
+
+model Report {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name            String
+  date            String
+  type            String
+  status          String
+  summary         String?
+  keyFindings     String[]
+  recommendations String[]
+  error           String?
+  createdAt       DateTime @default(now())
+}
+
+model Prediction {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date          String
+  riskScore     Float
+  riskLevel     String
+  age           String
+  bmi           String
+  glucose       String
+  hba1c         String
+  bloodPressure String
+  familyHistory String
+  riskFactors   Json
+  createdAt     DateTime @default(now())
+}

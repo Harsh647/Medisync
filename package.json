@@ -1,17 +1,29 @@
 {
   "name": "medisync",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma skills sync || exit 0",
+    "contract:emit": "prisma contract emit"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@prisma/client": "^5.22.0",
+    "firebase": "^12.18.0",
+    "framer-motion": "^13.2.0",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.43.0",
     "next": "16.3.4",
+    "pdfjs-dist": "^6.3.289",
+    "prisma": "^5.22.0",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
