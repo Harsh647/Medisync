@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MediSync 🏥
 
-## Getting Started
+**AI-Powered Personal Health Record Management System with Disease Prediction**
 
-First, run the development server:
+MediSync is a centralized digital health platform designed to help users seamlessly manage their medical records, track daily vitals, monitor medication schedules, and leverage Artificial Intelligence for disease risk prediction and medical report analysis.
 
+---
+
+## ✨ Key Features
+
+*   **Secure Authentication:** User login and session management powered by Firebase.
+*   **Medicine Tracker:** Real-time dosage scheduling, stock management, and daily reset logic.
+*   **Digital Vault:** Secure storage for medical documents with upload filters and PDF previews.
+*   **Vitals Monitoring:** Log daily health metrics (BP, Sugar, etc.), visualize historical trends with charts, and export PDF reports.
+*   **AI Report Summarizer:** Intelligent medical document analysis using the Google Gemini AI API.
+*   **Disease Risk Prediction:** Machine learning models powered by a dedicated Python/FastAPI backend to assess health risks based on patient data.
+
+## 💻 Tech Stack
+
+**Frontend & Core API:**
+*   [Next.js](https://nextjs.org/) (App Router, SSR)
+*   React.js & Tailwind CSS
+*   Firebase (Authentication)
+
+**Backend & ML:**
+*   [FastAPI](https://fastapi.tiangolo.com/) (Python microservice for ML models)
+*   Google Gemini AI API (NLP & Report Analysis)
+
+**Database & ORM:**
+*   [Supabase](https://supabase.com/) (PostgreSQL)
+*   [Prisma](https://www.prisma.io/) (ORM)
+
+---
+
+## 🚀 Getting Started
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+*   Node.js (v18+)
+*   Python (3.9+)
+*   Git
+
+### 1. Clone the repository
 ```bash
+git clone [https://github.com/Harsh-Yadav-079/MediSync.git](https://github.com/Harsh-Yadav-079/MediSync.git)
+cd MediSync
+
+2. Environment Variables
+Create a .env file in the root directory and add the following keys. You will need to provision your own Firebase project, Supabase database, and Gemini API key.
+# Database (Supabase / Prisma)
+DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-SUPABASE-REF].supabase.co:5432/postgres"
+
+# Firebase Authentication
+NEXT_PUBLIC_FIREBASE_API_KEY="your_api_key"
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="your_auth_domain"
+NEXT_PUBLIC_FIREBASE_PROJECT_ID="your_project_id"
+
+# AI Integration
+GEMINI_API_KEY="your_gemini_api_key"
+
+# FastAPI Backend URL
+NEXT_PUBLIC_ML_BACKEND_URL="http://localhost:8000"
+
+3. Install Frontend Dependencies
+npm install
+# or yarn install / pnpm install
+
+4. Setup Prisma Database
+Push the schema to your Supabase database and generate the Prisma client:
+npx prisma db push
+npx prisma generate
+
+5. Run the Application
+Start the Next.js Frontend Development Server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 with your browser to see the result.
+Start the FastAPI Machine Learning Backend (Optional/If configured):
+Navigate to your backend directory and run the Python server:
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The FastAPI documentation will be available at http://localhost:8000/docs.
+📈 Future Scope
+ * Implementation of advanced input validation across all API routes.
+ * Expanding the digital vault with secure download features.
+ * Integrating a real-time health chatbot using Gemini AI.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
