@@ -1,3 +1,4 @@
+
 # MediSync 🏥
 
 **AI-Powered Personal Health Record Management System with Disease Prediction**
@@ -8,27 +9,27 @@ MediSync is a centralized digital health platform designed to help users seamles
 
 ## ✨ Key Features
 
-*   **Secure Authentication:** User login and session management powered by Firebase.
-*   **Medicine Tracker:** Real-time dosage scheduling, stock management, and daily reset logic.
-*   **Digital Vault:** Secure storage for medical documents with upload filters and PDF previews.
-*   **Vitals Monitoring:** Log daily health metrics (BP, Sugar, etc.), visualize historical trends with charts, and export PDF reports.
-*   **AI Report Summarizer:** Intelligent medical document analysis using the Google Gemini AI API.
-*   **Disease Risk Prediction:** Machine learning models powered by a dedicated Python/FastAPI backend to assess health risks based on patient data.
+* **Secure Authentication:** User login and session management powered by Firebase.
+* **Medicine Tracker:** Real-time dosage scheduling, stock management, and daily reset logic.
+* **Digital Vault:** Secure storage for medical documents with upload filters and PDF previews.
+* **Vitals Monitoring:** Log daily health metrics (BP, Sugar, etc.), visualize historical trends with charts, and export PDF reports.
+* **AI Report Summarizer:** Intelligent medical document analysis using the Google Gemini AI API.
+* **Disease Risk Prediction:** Machine learning models powered by a dedicated Python/FastAPI backend to assess health risks based on patient data.
 
 ## 💻 Tech Stack
 
 **Frontend & Core API:**
-*   [Next.js](https://nextjs.org/) (App Router, SSR)
-*   React.js & Tailwind CSS
-*   Firebase (Authentication)
+* Next.js (App Router, SSR)
+* React.js & Tailwind CSS
+* Firebase (Authentication)
 
 **Backend & ML:**
-*   [FastAPI](https://fastapi.tiangolo.com/) (Python microservice for ML models)
-*   Google Gemini AI API (NLP & Report Analysis)
+* FastAPI (Python microservice for ML models)
+* Google Gemini AI API (NLP & Report Analysis)
 
 **Database & ORM:**
-*   [Supabase](https://supabase.com/) (PostgreSQL)
-*   [Prisma](https://www.prisma.io/) (ORM)
+* Supabase (PostgreSQL)
+* Prisma (ORM)
 
 ---
 
@@ -37,17 +38,17 @@ MediSync is a centralized digital health platform designed to help users seamles
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
-*   Node.js (v18+)
-*   Python (3.9+)
-*   Git
+* Node.js (v18+)
+* Python (3.9+)
+* Git
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/Harsh-Yadav-079/MediSync.git](https://github.com/Harsh-Yadav-079/MediSync.git)
+git clone https://github.com/Harsh-Yadav-079/MediSync.git
 cd MediSync
 
 2. Environment Variables
-Create a .env file in the root directory and add the following keys. You will need to provision your own Firebase project, Supabase database, and Gemini API key.
+Create a .env file in the root directory and add the following keys:
 # Database (Supabase / Prisma)
 DATABASE_URL="postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-SUPABASE-REF].supabase.co:5432/postgres"
 
@@ -64,7 +65,6 @@ NEXT_PUBLIC_ML_BACKEND_URL="http://localhost:8000"
 
 3. Install Frontend Dependencies
 npm install
-# or yarn install / pnpm install
 
 4. Setup Prisma Database
 Push the schema to your Supabase database and generate the Prisma client:
@@ -76,13 +76,11 @@ Start the Next.js Frontend Development Server:
 npm run dev
 
 Open http://localhost:3000 with your browser to see the result.
-Start the FastAPI Machine Learning Backend (Optional/If configured):
-Navigate to your backend directory and run the Python server:
+Start the FastAPI Machine Learning Backend (Optional):
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload
 
-The FastAPI documentation will be available at http://localhost:8000/docs.
 📈 Future Scope
  * Implementation of advanced input validation across all API routes.
  * Expanding the digital vault with secure download features.
